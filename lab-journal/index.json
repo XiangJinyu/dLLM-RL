@@ -1,0 +1,82 @@
+{
+  "project": "lab-journal",
+  "experiments": [
+    {
+      "id": "001",
+      "slug": "preliminary-agent-rl",
+      "type": "exploration",
+      "status": "completed",
+      "conclusion_type": "insight",
+      "conclusion": "Agent RL pipeline for diffusion LLMs is feasible. Tool call rate improves with training, but accuracy gains require SFT model and more data.",
+      "depends_on": [],
+      "tags": [
+        "agent-rl",
+        "llada",
+        "baseline",
+        "feasibility"
+      ],
+      "created": "2026-02-27",
+      "leads_to": []
+    },
+    {
+      "id": "002",
+      "slug": "baseline-gsm8k-zeroshot",
+      "type": "exploration",
+      "status": "completed",
+      "conclusion_type": "quantitative",
+      "conclusion": "LLaDA-8B-Base zero-shot on GSM8K: 8.5% accuracy. Low baseline expected for non-instruction-tuned diffusion LM.",
+      "depends_on": [],
+      "tags": [
+        "baseline",
+        "gsm8k",
+        "llada",
+        "zero-shot"
+      ],
+      "created": "2026-02-27",
+      "leads_to": [
+        "003",
+        "004"
+      ]
+    },
+    {
+      "id": "003",
+      "slug": "agent-rl-tracerl-gsm8k",
+      "type": "hypothesis",
+      "status": "completed",
+      "conclusion_type": "quantitative",
+      "conclusion": "Agent RL (TraceRL) on GSM8K: 14.0% final accuracy (vs 8.5% zero-shot baseline). Accuracy improves from 8.5% to 16% at step 25-30. Tool call rate starts at 17% but decreases to 3.5%. Training is stable.",
+      "depends_on": [
+        "002"
+      ],
+      "tags": [
+        "agent-rl",
+        "tracerl",
+        "gsm8k",
+        "llada",
+        "main-experiment"
+      ],
+      "created": "2026-02-27",
+      "leads_to": []
+    },
+    {
+      "id": "004",
+      "slug": "standard-rl-no-tools",
+      "type": "hypothesis",
+      "status": "completed",
+      "conclusion_type": "quantitative",
+      "conclusion": "Standard single-turn RL (no tools) on GSM8K: 18.0% accuracy (vs 8.5% zero-shot). Stronger than agent RL (14.0%), suggesting tool overhead hurts on GSM8K with base model.",
+      "depends_on": [
+        "002"
+      ],
+      "tags": [
+        "standard-rl",
+        "tracerl",
+        "gsm8k",
+        "llada",
+        "baseline"
+      ],
+      "created": "2026-02-27",
+      "leads_to": []
+    }
+  ]
+}
