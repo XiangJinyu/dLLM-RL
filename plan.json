@@ -1,0 +1,61 @@
+{
+  "project": "Agent RL for Diffusion Language Models",
+  "target": "Workshop paper (4-6 pages), NeurIPS/ICML 2026",
+  "success_criteria": [
+    "Agent RL (TraceRL + tools) accuracy > standard RL (no tools) on GSM8K eval",
+    "Tool call rate increases over training steps",
+    "Segment-aware masking ablation shows it is necessary (removing it hurts)",
+    "Pipeline runs stably for 30+ steps without divergence"
+  ],
+  "tasks": [
+    {
+      "id": "002",
+      "name": "Baseline: LLaDA-8B zero-shot eval",
+      "description": "Evaluate LLaDA-8B-Base zero-shot on GSM8K test (200 samples) and MATH500 (100 samples). No RL, no tools. Establishes the floor.",
+      "status": "pending",
+      "summary": ""
+    },
+    {
+      "id": "003",
+      "name": "Baseline: Standard single-turn RL (no tools)",
+      "description": "Train LLaDA-8B with standard TraceRL on GSM8K (no tool access). 30 steps, same hyperparams. Compare against agent RL to isolate tool-use benefit.",
+      "status": "pending",
+      "summary": ""
+    },
+    {
+      "id": "004",
+      "name": "Main: Agent RL with TraceRL + calculator",
+      "description": "Train LLaDA-8B with agent RL (calculator tool, segment-aware TraceRL masking). 30 steps on GSM8K. Eval on GSM8K test + MATH500. Core result.",
+      "status": "pending",
+      "summary": ""
+    },
+    {
+      "id": "005",
+      "name": "Comparison: Agent RL with random masking",
+      "description": "Same as 004 but use random_masking instead of TraceRL. Isolates the effect of trajectory-aware credit assignment.",
+      "status": "pending",
+      "summary": ""
+    },
+    {
+      "id": "006",
+      "name": "Ablation: Remove segment-aware masking",
+      "description": "Same as 004 but train on ALL tokens (including observation tokens). Validates that segment-aware masking is critical.",
+      "status": "pending",
+      "summary": ""
+    },
+    {
+      "id": "007",
+      "name": "Analysis: Learning curves and tool usage",
+      "description": "Extract per-step metrics from experiments 003/004/005/006: accuracy, tool call rate, loss, reward variance. Generate plots.",
+      "status": "pending",
+      "summary": ""
+    },
+    {
+      "id": "008",
+      "name": "Visualization and paper writing",
+      "description": "Create all figures/tables. Write workshop paper draft.",
+      "status": "pending",
+      "summary": ""
+    }
+  ]
+}
